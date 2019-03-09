@@ -11,7 +11,7 @@ public:
     ListNode *insertionSortList(ListNode *head) {
         if(!head || !head->next) return head;
         ListNode *newHead = new ListNode(0);
-        /*
+        /*做法一
         while(head)
         {
             ListNode *pre = newHead;
@@ -32,6 +32,7 @@ public:
             head = head->next;
         }
         */
+        /*做法二
         while(head)
         {
             ListNode *cur = newHead;
@@ -41,6 +42,17 @@ public:
             t->next = cur->next;
             cur->next = t;
             head = head->next;
+        }
+        */
+        while(head)
+        {
+            ListNode *next = head->next;
+            ListNode *cur = newHead;
+            while(cur && cur->next && cur->next->val <= head->val)
+                cur = cur->next;
+            head->next = cur->next;
+            cur->next = head;
+            head = next;
         }
         return newHead->next;
     }
