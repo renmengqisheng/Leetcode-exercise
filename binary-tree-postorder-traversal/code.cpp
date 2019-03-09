@@ -13,8 +13,9 @@ public:
         vector<int> v;
         if(!root) return v;
         stack<TreeNode *> s;
-        stack<int> help;
         s.push(root);
+        /*做法一：辅助栈
+        stack<int> help;
         while(!s.empty())
         {
             TreeNode *t = s.top();
@@ -28,6 +29,19 @@ public:
             v.push_back(help.top());
             help.pop();
         }
+        */
+        /*
+        做法二：使用STL库函数
+        */
+        while(!s.empty())
+        {
+            TreeNode* t = s.top();
+            s.pop();
+            v.push_back(t->val);
+            if(t->left) s.push(t->left);
+            if(t->right) s.push(t->right);
+        }
+        reverse(v.begin(), v.end());
         return v;
     }
 };
