@@ -10,5 +10,4 @@ dict =["cat", "cats", "and", "sand", "dog"].
 
 A solution is["cats and dog", "cat sand dog"].
 
-思路：
-
+思路：(hard)
