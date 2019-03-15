@@ -8,6 +8,34 @@
  */
 class Solution {
 public:
+    /*****************************************
+    *思路一
+    RandomListNode *copyRandomList(RandomListNode *head) {
+        if(!head || !head->next) return head;
+        unordered_map<RandomListNode *, RandomListNode *> m;
+        RandomListNode *cur = head;
+        while(cur)
+        {
+            RandomListNode *t = new RandomListNode(cur->label);
+            m[cur] = t;
+            cur = cur->next;
+        }
+        RandomListNode *newhead = m[head];
+        cur = head;
+        while(cur)
+        {
+            RandomListNode *t = m[cur];
+            t->next = m[cur->next];
+            t->random = m[cur->random];
+            cur = cur->next;
+        }
+        return newhead;
+    }
+    ******************************************/
+    
+    /******************************************
+    *思路二
+    ******************************************/
     RandomListNode *copyRandomList(RandomListNode *head) {
         if(!head || !head->next) return head;
         RandomListNode *cur = head;
@@ -36,4 +64,5 @@ public:
         }
         return newhead;
     }
+    
 };
