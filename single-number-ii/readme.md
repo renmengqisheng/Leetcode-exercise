@@ -13,3 +13,4 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 
 思路：
 
+对每一位单独统计出现1的次数，如果出现的次数不能整除3，说明唯一存在的数在这一位上为1, 时间复杂度O(32N)，即O(N)。
