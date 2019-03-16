@@ -1,6 +1,8 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+        /********************************
+        *思路一
         int len = s.size();
         if(len < 2) return len;
         int res = INT_MIN;
@@ -18,6 +20,22 @@ public:
                     res = max(res, len-i);
                 m.insert(s[j]);
             }
+        }
+        return res;
+        ********************************/
+        /********************************
+        *思路二
+        ********************************/
+        int len = s.size();
+        if(len < 2) return len;
+        int dup = -1;
+        int res = INT_MIN;
+        unordered_map<char, int> m;
+        for(int i = 0; i < len; i++)
+        {
+            if(m.count(s[i])) dup = max(m[s[i]], dup);
+            res = max(res, i-dup);
+            m[s[i]] = i;
         }
         return res;
     }
